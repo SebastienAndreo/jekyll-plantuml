@@ -24,9 +24,10 @@ require 'digest'
 require 'fileutils'
 
 module Jekyll
-  class PlantumlBlock < Liquid::Block
+  class PlantumlExtBlock < Liquid::Block
     def initialize(tag_name, markup, tokens)
       super
+      Jekyll.logger.debug "Do initialize"
       @html = (markup or '').strip
     end
 
@@ -39,6 +40,8 @@ module Jekyll
         if File.exists?(svg)
           puts "File #{svg} already exists (#{File.size(svg)} bytes)"
         else
+          
+          Jekyll.logger.debug 'Do Something'
           FileUtils.mkdir_p(File.dirname(uml))
           File.open(uml, 'w') { |f|
             f.write("@startuml\n")
@@ -52,9 +55,10 @@ module Jekyll
           puts "File #{svg} created (#{File.size(svg)} bytes)"
         end
       end
-      "<p><object data='#{site.baseurl}/uml/#{name}.svg' type="image/svg+xml" #{@html}></object></p>"
+      "<p><object data='#{site.baseurl}/uml/#{name}.svg' type='image/svg+xml' #{@html}></object></p>"
     end
   end
 end
 
-Liquid::Template.register_tag('plantuml', Jekyll::PlantumlBlock)
+Jekyll.logger.debug 'Call Register tag'
+Liquid::Template.register_tag('plantumlext', Jekyll::PlantumlExtBlock)

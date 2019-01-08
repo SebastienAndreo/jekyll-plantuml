@@ -1,6 +1,6 @@
 # (The MIT License)
 #
-# Copyright (c) 2014-2017 Yegor Bugayenko
+# Copyright (c) 2014-2019 Sébastien Andreo
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -20,6 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-module PlantUML
-  VERSION = '1.0.snapshot'
+module PlantUMLExt
+  VERSION = '0.1'
 end
